@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Netdev.DataAccess.DbContexts;
+using Netdev.DataAccess.Interfaces;
+using Netdev.DataAccess.Repositories;
 
 namespace Netdev.Api.Configurations.LayerConfigurations
 {
