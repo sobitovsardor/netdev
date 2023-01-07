@@ -1,0 +1,14 @@
+﻿using Netdev.Domain.Entities.Users;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Netdev.Service.Interfaces.Common.Security
+{
+    public interface IAuthManagerService
+    {
+        public string GenerateToken(User user);
+    }
+}
