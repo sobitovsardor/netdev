@@ -1,4 +1,5 @@
 ﻿using Netdev.Domain.Common;
+using Netdev.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace Netdev.Domain.Entities
         public DateTime RegisterDateTime { get; set; }
 
         public bool IsEmailConfirmed { get; set; }
+
+        public UserRole Role { get; set; }
     }
 }
