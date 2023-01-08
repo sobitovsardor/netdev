@@ -51,24 +51,6 @@ namespace Netdev.Api.Controllers
             }
         }
 
-        [HttpGet("id")]
-        public async Task<IActionResult> GetsByIdAsync(long id)
-        {
-            try
-            {
-                var result = await _docsService.GetAsync(id);
-                return Ok(result);
-            }
-            catch (NotFoundException exception)
-            {
-                return NotFound(exception.Message);
-            }
-            catch
-            {
-                return StatusCode(500);
-            }
-        }
-
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromForm] DocCreatedto dto)
         {
