@@ -18,4 +18,8 @@
     <ProjectReference Include="..\Netdev.DataAccess\Netdev.DataAccess.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
 </Project>
