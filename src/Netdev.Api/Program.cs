@@ -9,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.ConfigureDataAccess();
 builder.Services.AddScoped<IDocsService, DocService>();
+builder.Services.AddScoped<IInterviewService, InterviewService>();
 
 // -> Middlewars
 var app = builder.Build();
