@@ -14,8 +14,6 @@ namespace Netdev.Domain.Entities.Docs
 
         public string Source { get; set; } = string.Empty;
 
-        public long CategoryId { get; set; }
-
-        public virtual TestCategory TestCategory { get; set; } = default!;
+        public string Category { get; set; } = string.Empty;
     }
 }

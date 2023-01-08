@@ -17,9 +17,7 @@ namespace Netdev.Domain.Entities
         public string Email { get; set; } = string.Empty;
 
         public DateTime RegisterDateTime { get; set; }
-
-        public bool IsEmailConfirmed { get; set; }
-
+        
         public UserRole Role { get; set; }
     }
 }
