@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Netdev.Domain.Entities.Tests
 {
-    public class Test : Auditable
+    public class Test : BaseEntity
     {
         public string Questions { get; set; } = string.Empty;
 

@@ -11,7 +11,7 @@ namespace Netdev.Service.Dtos.Accounts
     public class AccountRegisterDto
     {
         [Required, MaxLength(30), MinLength(2)]
-        public string UserName { get; set; }
+        public string UserName { get; set; } = String.Empty;
        
         [Required, EmailAddress]
         public string Email { get; set; } = String.Empty;

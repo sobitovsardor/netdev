@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Netdev.Domain.Entities.Interviews
 {
-    public class Interview:Auditable
+    public class Interview: BaseEntity
     {
         public string Qestion { get; set; } = string.Empty;
 
