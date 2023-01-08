@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Netdev.Domain.Entities.Statistics
 {
-    public class Statistic:Auditable
+    public class Statistic: BaseEntity
     {
         public long UserId { get; set; }
         public virtual User User { get; set; } = default!;

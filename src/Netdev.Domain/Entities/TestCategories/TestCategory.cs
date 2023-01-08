@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Netdev.Domain.Entities.TestCategories
 {
-    public class TestCategory:Auditable
+    public class TestCategory: BaseEntity
     {
         public string Name { get; set; } = string.Empty;
 

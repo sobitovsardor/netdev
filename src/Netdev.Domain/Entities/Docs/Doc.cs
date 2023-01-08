@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Netdev.Domain.Entities.Docs
 {
-    public class Doc:Auditable
+    public class Doc:BaseEntity
     {
         public string Title { get; set; } = string.Empty;
 

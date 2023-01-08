@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Netdev.Domain.Entities
 {
-    public class Human:Auditable
+    public class Human: BaseEntity
     {
         public string UserName { get; set; } = string.Empty;
 
