@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Netdev.Domain.Entities.Users;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Netdev.Service.Interfaces
 {
-    public interface IEmailService
+    public interface IAuthManager
     {
-        public Task SendEmailAsync(string email, string massage);
+        public string GenerateToken(User user);
     }
 }
