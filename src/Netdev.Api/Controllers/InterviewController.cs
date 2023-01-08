@@ -1,21 +1,23 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Netdev.Domain.Entities.Docs;
+using Netdev.Domain.Entities.Interviews;
 using Netdev.Service.Dtos;
 using Netdev.Service.Exceptions;
 using Netdev.Service.Interfaces;
-using System.Security.AccessControl;
+using Netdev.Service.Services;
 
 namespace Netdev.Api.Controllers
 {
-    [Route("api/documentation")]
+    [Route("api/[controller]")]
     [ApiController]
-    public class DocsController : ControllerBase
+    public class InterviewController : ControllerBase
     {
-        private IDocsService _docsService;
-        public DocsController(IDocsService docsService)
+        private IInterviewService _interviewservice;
+
+        public InterviewController(IInterviewService interviewService)
         {
-            this._docsService = docsService;
+                this._interviewservice = interviewService;
         }
 
 
@@ -24,7 +26,7 @@ namespace Netdev.Api.Controllers
         {
             try
             {
-                var result = await _docsService.GetAllAsync();
+                var result = await _interviewservice.GetAllAsync();
                 return Ok(result);
             }
             catch
@@ -38,7 +40,7 @@ namespace Netdev.Api.Controllers
         {
             try
             {
-                var result = await _docsService.GetAsync(id);
+                var result = await _interviewservice.GetAsync(id);
                 return Ok(result);
             }
             catch (NotFoundException exception)
@@ -52,11 +54,11 @@ namespace Netdev.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAsync([FromForm] DocCreatedto dto)
+        public async Task<IActionResult> CreateAsync([FromForm] InterviewCreatedto dto)
         {
             try
             {
-                var result = await _docsService.CreateAsync(dto);
+                var result = await _interviewservice.CreateAsync(dto);
                 if (result) return Ok();
                 else return BadRequest();
             }
@@ -71,7 +73,7 @@ namespace Netdev.Api.Controllers
         {
             try
             {
-                var result = await _docsService.DeleteAsync(id);
+                var result = await _interviewservice.DeleteAsync(id);
                 return Ok(result);
             }
             catch (NotFoundException exception)
@@ -85,11 +87,11 @@ namespace Netdev.Api.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateByIdAsync(long id, [FromBody] Doc obj)
+        public async Task<IActionResult> UpdateByIdAsync(long id, [FromBody] Interview obj)
         {
             try
             {
-                var result = await _docsService.UpdateAsync(id, obj);
+                var result = await _interviewservice.UpdateAsync(id, obj);
                 return Ok(result);
             }
             catch (NotFoundException exception)

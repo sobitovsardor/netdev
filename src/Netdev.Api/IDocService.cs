@@ -1,4 +1,0 @@
-﻿// -> Services
-internal interface IDocService
-{
-}
