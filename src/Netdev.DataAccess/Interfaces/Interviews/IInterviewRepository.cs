@@ -9,5 +9,6 @@ namespace Netdev.DataAccess.Interfaces.Interviews
 {
     public interface IInterviewRepository:IGenericRepository<Interview>
     {
+        Task<Interview> SortByCategoryInterview(string category);
     }
 }

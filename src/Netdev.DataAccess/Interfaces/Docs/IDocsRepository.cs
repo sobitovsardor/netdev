@@ -9,6 +9,6 @@ namespace Netdev.DataAccess.Interfaces.Docs
 {
     public interface IDocsRepository:IGenericRepository<Doc>
     {
-
+        Task<Doc> SortByCategoryDocs(string category);
     }
 }

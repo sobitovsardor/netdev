@@ -31,7 +31,7 @@ namespace Netdev.Service.Services
                 var result = await appDbContext.SaveChangesAsync();
                 return result > 0;
             }
-            else throw new Exception("Car not found");
+            else throw new Exception("Document not found");
         }
 
         public async Task<IEnumerable<Doc>> GetAllAsync()
@@ -43,7 +43,14 @@ namespace Netdev.Service.Services
         public async Task<Doc> GetAsync(long id)
         {
             var result = await appDbContext.Docs.FindAsync(id);
-            if (result is null) throw new Exception("Car not found");
+            if (result is null) throw new Exception("Document not found");
+            else return result;
+        }
+
+        public async Task<Doc> GetTaskAsync(string categories)
+        {
+            var result = await appDbContext.Docs.FindAsync(categories);
+            if (result is null) throw new Exception("Document not found");
             else return result;
         }
 
@@ -58,7 +65,7 @@ namespace Netdev.Service.Services
                 var result = await appDbContext.SaveChangesAsync();
                 return result > 0;
             }
-            else throw new Exception("Car not found");
+            else throw new Exception("Document not found");
         }
     }
 }
