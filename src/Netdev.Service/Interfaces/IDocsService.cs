@@ -20,5 +20,7 @@ namespace Netdev.Service.Interfaces
         public Task<bool> CreateAsync(DocCreatedto dto);
 
         public Task<bool> UpdateAsync(long id, Doc obj);
+
+        public Task<Doc> GetTaskAsync(string categories);
     }
 }
