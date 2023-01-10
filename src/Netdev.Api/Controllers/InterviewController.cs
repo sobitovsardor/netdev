@@ -53,6 +53,24 @@ namespace Netdev.Api.Controllers
             }
         }
 
+        [HttpGet("categories")]
+        public async Task<IActionResult> GetByCategoryAsync(string categories)
+        {
+            try
+            {
+                var result = await _interviewservice.GetTaskAsync(categories);
+                return Ok(result);
+            }
+            catch (NotFoundException exception)
+            {
+                return NotFound(exception.Message);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
+
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromForm] InterviewCreatedto dto)
         {

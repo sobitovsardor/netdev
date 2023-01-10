@@ -21,6 +21,6 @@ namespace Netdev.Service.Interfaces
 
         public Task<bool> UpdateAsync(long id, Doc obj);
 
-        public Task<Doc> GetTaskAsync(string categories);
+        public Task<IEnumerable<Doc>> GetTaskAsync(string categories);
     }
 }

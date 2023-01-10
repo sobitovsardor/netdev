@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Netdev.DataAccess.DbContexts;
+using Netdev.DataAccess.Interfaces.Docs;
+using Netdev.DataAccess.Repositories.Docs;
 using Netdev.Domain.Entities.Docs;
 using Netdev.Service.Dtos;
 using Netdev.Service.Interfaces;
@@ -47,9 +49,11 @@ namespace Netdev.Service.Services
             else return result;
         }
 
-        public async Task<Doc> GetTaskAsync(string categories)
+        public async Task<IEnumerable<Doc>> GetTaskAsync(string categories)
         {
-            var result = await appDbContext.Docs.FindAsync(categories);
+            var sort = await appDbContext.Docs.AsNoTracking()
+            .ToListAsync();
+            var result = sort.Where(x => x.Category == categories).ToList();
             if (result is null) throw new Exception("Document not found");
             else return result;
         }
