@@ -47,6 +47,15 @@ namespace Netdev.Service.Services
             else return result;
         }
 
+        public async Task<IEnumerable<Interview>> GetTaskAsync(string categories)
+        {
+            var sort = await appDbContext.Interviews.AsNoTracking()
+            .ToListAsync();
+            var result = sort.Where(x => x.Category == categories).ToList();
+            if (result is null) throw new Exception("Document not found");
+            else return result;
+        }
+
         public async Task<bool> UpdateAsync(long id, Interview obj)
         {
             var entity = await appDbContext.Interviews.FindAsync(id);

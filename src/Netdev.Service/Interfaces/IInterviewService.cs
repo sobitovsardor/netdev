@@ -20,5 +20,7 @@ namespace Netdev.Service.Interfaces
         public Task<bool> CreateAsync(InterviewCreatedto dto);
 
         public Task<bool> UpdateAsync(long id, Interview obj);
+
+        public Task<IEnumerable<Interview>> GetTaskAsync(string categories);
     }
 }
