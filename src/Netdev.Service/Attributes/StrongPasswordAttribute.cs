@@ -1,0 +1,41 @@
+﻿using Netdev.Service.Validators;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Netdev.Service.Attributes
+{
+    public class StrongPasswordAttribute:ValidationAttribute
+    {
+        public static (bool IsValid, string Message) IsStrong(string password)
+        {
+            bool isLower = false;
+            bool isUpper = false;
+            bool isDigit = false;
+            bool isChar = false;
+
+            for (int i = 0; i < password.Length; i++)
+            {
+                int k = (int)password[i];
+                if (k >= 97 && k <= 122) isLower = true;
+                else if (k >= 65 && k <= 90) isUpper = true;
+                else if (k >= 48 && k <= 57) isDigit = true;
+                else if (k > 32 && k < 127) isChar = true;
+            }
+
+            if (!isLower)
+                return (IsValid: false, Message: "Password must be at least one lower letter");
+            if (!isUpper)
+                return (IsValid: false, Message: "Password must be at least one upper letter");
+            if (!isDigit)
+                return (IsValid: false, Message: "Password must be at least one digit");
+            if (!isChar)
+                return (IsValid: false, Message: "Password must be at least one character as (!@#$%^&*()-+)");
+
+            return (IsValid: true, Message: "Password is strong!");
+        }
+    }
+}
