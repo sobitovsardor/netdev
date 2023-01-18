@@ -43,6 +43,7 @@ namespace Netdev.Service.Services
             var userEntity = (User)dto;
             userEntity.PasswordHash = hasherResult.Hash;
             userEntity.Salt = hasherResult.Salt;
+            userEntity.Role = Domain.Enums.UserRole.User;
 
             _repository.Users.Add(userEntity);
             var dbResult = await _repository.SaveChangesAsync();

@@ -14,7 +14,10 @@ builder.ConfigureDataAccess();
 builder.Services.AddScoped<IDocsService, DocService>();
 builder.Services.AddScoped<IInterviewService, InterviewService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IFileService, FileService>();
 builder.Services.AddScoped<IAuthManager, AuthManager>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 builder.ConfigureAuth();
 builder.Services.ConfigureSwaggerAuthorize();
 
@@ -26,6 +29,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();

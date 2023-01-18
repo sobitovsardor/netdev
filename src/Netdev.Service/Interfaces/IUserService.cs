@@ -17,6 +17,6 @@ namespace Netdev.Service.Interfaces
 
         public Task<bool> DeleteAsync(long id);
 
-        public Task<bool> UpdateAsync(long id, UserViewModel obj);
+        public Task<bool> UpdateAsync(long id, UserCreateDto obj);
     }
 }

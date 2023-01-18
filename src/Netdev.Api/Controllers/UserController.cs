@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Netdev.Domain.Entities.Users;
 using Netdev.Service.Dtos;
@@ -66,6 +67,23 @@ namespace Netdev.Api.Controllers
             }
         }
 
+        [HttpPut ("{id}")]
+        public async Task<IActionResult> UpdateAsync([FromForm] UserCreateDto userCreateDto, long id)
+        {
+            try
+            {
+                var result = await _userService.UpdateAsync(id, userCreateDto);
+                return Ok(result);
+            }
+            catch (NotFoundException exception)
+            {
+                return NotFound(exception.Message);
+            }
+            catch
+            {
+                return StatusCode(500);
+            }
+        }
         
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Netdev.DataAccess.DbContexts;
+using Netdev.DataAccess.Interfaces;
 using Netdev.DataAccess.Interfaces.Users;
 using Netdev.DataAccess.Repositories;
 using Netdev.Domain.Entities.Users;
@@ -16,11 +17,11 @@ namespace Netdev.Service.Services
 {
     public class UserService : IUserService
     {
-        private readonly UnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly AppDbContext _appDbContext;
         private readonly IFileService _fileService;
 
-        public UserService(AppDbContext appDbContext ,IFileService fileService,UnitOfWork unitOfWork)
+        public UserService(AppDbContext appDbContext ,IFileService fileService,IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
             _appDbContext = appDbContext;
@@ -65,15 +66,16 @@ namespace Netdev.Service.Services
             else return result;
         }
 
-        public async Task<bool> UpdateAsync(long id, UserViewModel obj)
+        public async Task<bool> UpdateAsync(long id, UserCreateDto obj)
         {
             var entity = await _appDbContext.Users.FindAsync(id);
             _appDbContext.Entry<User>(entity!).State = EntityState.Detached;
+            var imagePath = await _fileService.SaveImageAsync(obj.Image);
             if (entity is not null)
             {
                 entity.Id = id;
                 entity.Email = obj.Email;
-                entity.ImagePath = obj.ImagePath;
+                entity.ImagePath = imagePath;
                 entity.UserName = obj.UserName;
                
                 _appDbContext.Users.Update(entity);
