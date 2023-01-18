@@ -9,7 +9,7 @@ namespace Netdev.Service.Dtos
 {
     public class AccountLoginDto
     {
-        [Required, MaxLength(20), MinLength(3), EmailAddress]
+        [Required, MaxLength(30), MinLength(3), EmailAddress]
         public string Email { get; set; } = String.Empty;
 
         [Required, MinLength(8)]

@@ -28,7 +28,7 @@ namespace Netdev.Service.Dtos
 
         [Required(ErrorMessage = "Image is required")]
         [DataType(DataType.Upload)]
-        [MaxFileSize(3)]
+        [MaxFileSize(5)]
         [AllowedFileExtensionAttribute(new string[] { ".jpg", ".png", ".ico" })]
         public IFormFile Image { get; set; } = null!;
 
