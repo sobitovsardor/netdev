@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Netdev.Domain\Netdev.Domain.csproj" />
+    <ProjectReference Include="..\Market.Domain\Market.Domain.csproj" />
   </ItemGroup>
 
 </Project> 
